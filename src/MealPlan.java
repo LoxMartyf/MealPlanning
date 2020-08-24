@@ -1,4 +1,5 @@
 public class MealPlan {
+
     // Fields that define a meal plan
     String startDate;
 
