@@ -1,22 +1,23 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String[] knownDishes = KnownDishes.entrees;
         Scanner scan = new Scanner(System.in);
-        System.out.println("Do you want to add an entree or side?");
-        String nextDish = scan.next() + scan.nextLine();
-        if (Arrays.stream(knownDishes).anyMatch(nextDish::equals)){
-            MealPlan newPlan = new MealPlan(nextDish);
-            System.out.println(newPlan);
-    }
-        else{
-            System.out.println("Doesn't match anything, please try again. Here's the known list of dishes:");
-            for(int i=0; i<=knownDishes.length-1;i++){
-                System.out.println(knownDishes[i]);
-            }
-            String nextDish2 = scan.next() + scan.nextLine();
-        }
-    }
-}
+        int mealInteger;
+        ArrayList<String> allMeals = new ArrayList<String>();
+        String nextItem;
+        System.out.println("Let's get started.");
+        for(int i=0; i<=6;i++){ //For all weekdays
+            mealInteger=0; //First reset the meal integer counter
+            nextItem="Default";//First set nextItem to a default value
+            //While (maybe use the other version that doesn't have to run once) nextItem isn't "Next"
+            nextItem=StartOfDay.promptForPlanItem(StartOfDay.days[i],mealInteger);//Grab nextItem for meal integer value
+            allMeals.add(nextItem);//Add nextItem to allMeals
+            //End while loop
+        };
+        System.out.println("Here's your total list of items for this week:");
+        for(int i=0;i<=allMeals.size()-1;i++){
+            System.out.println(allMeals.get(i));
+        };
+}}
